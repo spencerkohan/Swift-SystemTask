@@ -12,7 +12,7 @@ let package = Package(
             targets: ["SystemTask"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/spencerkohan/Swift-EventEmitter", .branch("master")),
+        .package(url: "https://github.com/spencerkohan/Swift-EventEmitter", from: "0.1.8"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
