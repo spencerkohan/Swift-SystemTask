@@ -2,29 +2,30 @@ import XCTest
 @testable import SystemTask
 
 class SystemTaskTests: XCTestCase {
-    func testExample() {
+    func testSync() {
+        let output = SystemTask.execSync("echo \"test\"")
+        XCTAssertEqual(output, "test\n")
+    }
+    
+    func testAsync() {
         
-        print(SystemTask.execSync("time ls -a .."))
-        
-        let task = SystemTask(command: "time ls -a ..")
-        
+        var output = ""
+        let task = SystemTask(command: "echo \"test\"")
         _ = task.events.output.on { string in
-            print(string)
+            output += string
         }
-        
         let exp = expectation(description: "")
-        
         _ = task.events.finish.on {
-            print("DONE")
+            XCTAssertEqual(output, "test")
             exp.fulfill()
         }
-        
         task.start()
-        
         waitForExpectations(timeout: 1, handler: nil)
+        
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testSync", testSync),
+        ("testAsync", testAsync),
     ]
 }
