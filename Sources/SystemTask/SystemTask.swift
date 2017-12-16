@@ -7,8 +7,8 @@ public class SystemTask {
     let arguments : [String]
     
     public struct Events {
-        let output = Event<String>()
-        let finish = Event<Void>()
+        public let output = Event<String>()
+        public let finish = Event<Void>()
     }
     
     public let events: Events = Events()
@@ -66,7 +66,7 @@ public class SystemTask {
         
     }
     
-    func cancel() {
+    public func cancel() {
         task?.terminate()
     }
     
