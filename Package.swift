@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -12,7 +12,7 @@ let package = Package(
             targets: ["SystemTask"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/spencerkohan/Swift-EventEmitter", from: "0.1.8"),
+        .package(url: "https://github.com/spencerkohan/Swift-EventEmitter", .branch("master")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -23,5 +23,6 @@ let package = Package(
         .testTarget(
             name: "SystemTaskTests",
             dependencies: ["SystemTask"]),
-    ]
+    ],
+    swiftLanguageVersions: [.v4, .v4_2]
 )
